@@ -1,0 +1,31 @@
+﻿@model Comment
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <form asp-area="admin" asp-controller="Comment" asp-action="create" method="post" >
+                <div asp-validation-summary="All"></div>
+                <div class="mb-3">
+
+
+                    <label asp-for="@Model.CustomUser.FullName" class="form-label">User Name</label>
+                    <select class="form-control" asp-for="@Model.CustomUserId" asp-items="@(new SelectList(ViewBag.CustomUser,"Id","FullName"))">
+                        <option hidden >select</option> 
+                    </select>
+                   
+
+
+
+                    <label asp-for="@Model.Testimonials" class="form-label">Testimonials</label>
+                    <input type="text" class="form-control" asp-for="@Model.Testimonials">
+                    <span asp-validation-for="@Model.Testimonials" color="text-danger"> </span>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
